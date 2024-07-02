@@ -20,11 +20,13 @@ BidirectionalMIDI_Pipe pipes;                   //!< Instantiate the pipe to con
 
 /* ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ variable to change ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ */
 
-uint8_t ch[3]           = {2, 3, 4};                //!< MIDIチャンネルの管理
+uint8_t ch[3]           = {2, 3, 4};                //!< MIDIチャンネルの管理（master, A, B）
 uint8_t BPM_multi       = 5;                        //!< BPM用エンコーダの係数
 uint8_t enc_multi       = 5;                        //!< 汎用エンコーダの係数
 uint8_t nud_multi       = 1;                        //!< ナッジCCボタンの係数
 uint8_t defaultEnc[6]   = {64, 64, 64, 64, 64, 64}; //!< 各エンコーダの既定値
+uint8_t minPWM          = 0;                        //!< LEDのOFF時の明るさ
+uint8_t maxPWM          = 255;                      //!< LEDのON時の明るさ
 
 /* ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ variable to change ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ */
 
@@ -41,7 +43,7 @@ uint8_t LEDpin = 12;    //!< indicator
 
 
 CCAbsoluteEncoder enc_rotary[] = {
-    {{26, 28}, {MIDI_CC::Sound_Controller_1, Channel::createChannel(ch[0])}, BPM_coeff, }, // enc01 - for BPM
+    {{26, 28}, {MIDI_CC::Sound_Controller_1, Channel::createChannel(ch[0])}, BPM_coeff, }, // enc01 (for BPM)
     {{29, 31}, {MIDI_CC::Sound_Controller_2, Channel::createChannel(ch[0])}, enc_coeff, }, // enc02
     {{32, 34}, {MIDI_CC::Sound_Controller_3, Channel::createChannel(ch[0])}, enc_coeff, }, // enc03
     {{35, 37}, {MIDI_CC::Sound_Controller_4, Channel::createChannel(ch[0])}, enc_coeff, }, // enc04
@@ -147,8 +149,6 @@ uint32_t  startTime = 0;  //!< カウント開始時刻
  * @param rt      これも謎パラメータ
  */
 bool realTimeMessageCallback(RealTimeMessage rt) {
-    uint8_t minPWM = 0;
-    uint8_t maxPWM = 255;
     float   preBPM = 0;   // 一旦の計算結果としてのBPM 
 
     if (ppqn == 0) {
