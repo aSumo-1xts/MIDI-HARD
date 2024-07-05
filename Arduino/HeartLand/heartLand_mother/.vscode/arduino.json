@@ -1,8 +1,0 @@
-{
-    "port": "COM11",
-    "board": "arduino:avr:mega",
-    "programmer": "avrispmkii",
-    "sketch": "heartLand_mother.ino",
-    "output": "../ArduinoOutput",
-    "configuration": "cpu=atmega2560"
-}
