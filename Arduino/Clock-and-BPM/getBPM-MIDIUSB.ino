@@ -73,7 +73,7 @@ void setup() {
     Serial.begin(115200);
 }
 
-//! @grief loop function
+//! @brief loop function
 void loop() {
     clock2BPM();
 }
