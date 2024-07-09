@@ -1,7 +1,0 @@
-{
-    "port": "COM8",
-    "board": "arduino:avr:leonardo",
-    "programmer": "avrispmkii",
-    "sketch": "heartLand_daughter.ino",
-    "output": "../ArduinoOutput"
-}
