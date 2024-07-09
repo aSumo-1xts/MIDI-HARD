@@ -1,0 +1,41 @@
+@startuml HeartLand
+title "HeartLand" System Overview
+
+skinparam defaultFontname   Arial
+skinparam actorStyle        awesome
+
+' left to right direction
+
+package "Arduino" {
+    actor "Mega2560 ProMini \n(daughter)" as daughter
+    actor "ProMicro \n(mother)" as mother
+}
+
+actor PC as PC
+
+package "INPUT" {
+    usecase "Potentiometers"    as ucP
+    usecase "Buttons"           as ucB
+    usecase "Rotary Encoders"   as ucR
+}
+
+package OUTPUT {
+    usecase "LED" as ucL
+}
+
+ucP --> daughter : Analog
+ucB --> daughter : Digital
+ucR --> daughter : Digital
+
+ucP --> mother : Analog
+ucB --> mother : Digital
+ucL <-- mother : PWM
+
+daughter    <|-|>   mother : UART Serial MIDI
+daughter    ->      mother : CC / Note
+
+mother      <|-|>   PC : USB MIDI
+mother      ->      PC : CC / Note
+mother      <-      PC : MIDI Clock
+
+@enduml

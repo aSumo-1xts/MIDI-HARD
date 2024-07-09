@@ -4,15 +4,7 @@ Ableton LiveでDJをするためのUSB-MIDIコントローラ
 
 ## 概要
 
-```text:Diagram
-    many INPUTs         some INPUTs
-        ↓                   ↓
-        ↓                   ↓
-Mega 2560 Pro Mini  →   Pro Micro       →   PC
-    [daughter]      |    [mother]        |
-                    |                    |
-       (UART Serial Communication)    (USB-C)
-```
+![overview](overview.png)
 
 ## HeartLand_mother
 
