@@ -6,27 +6,9 @@
  * @date        2024-05-31
  * @copyright   GPL-3.0
  * @details     This sketch can get BPM from Clock sent by DAW, with Library "MIDIUSB.h".
- * @n           I use Arduino ProMicro and have verified it with AbletonLive 12 and StudioOne 6.
  */
 
-
-
-
-
 #include <MIDIUSB.h>
-
-// #define LEDpin X
-/*
-    ↑If necessary, use with "digitalWrite(LEDpin, LOW);"
-    and "digitalWrite(LEDpin, HIGH);" described below.
-    X may be 13 if you use UNO R3.
-*/
-
-uint16_t    BPM       = 0;  //!< global BPM
-uint8_t     ppqn      = 0;  //!< 24 Pulses Per Quarter Note
-uint32_t    startTime = 0;  //!< for Timer
-
-
 
 
 
@@ -55,8 +37,9 @@ void getSerialMIDI(int16_t *vals) {
 
 
 
-
-
+uint16_t    BPM       = 0;  //!< global BPM
+uint8_t     ppqn      = 0;  //!< 24 Pulses Per Quarter Note
+uint32_t    startTime = 0;  //!< for Timer
 /**
  * @brief   クロックを検出して処理する
  */
@@ -69,9 +52,7 @@ void clock2BPM() {
     if (MIDIvals[0] == 0xF8) {  // System Realtime Message about Clock.
         if (ppqn == 0) {                        // the first Clock
             startTime = micros();               // start Timer
-            // digitalWrite(LEDpin, LOW);       // Sync LED: OFF
         }
-        
         ppqn++;                                 // count up Clock
 
         if (ppqn > 24) {                        // 24 Clocks = 1 bar
@@ -80,13 +61,10 @@ void clock2BPM() {
                 BPM = round(preBPM);
             }
             Serial.println(BPM);                // or just "Serial.println(preBPM)"
-            // digitalWrite(LEDpin, HIGH);      // Sync LED: ON
             ppqn = 0;                           // reset Clock
         }
     }
 }
-
-
 
 
 
@@ -95,7 +73,7 @@ void setup() {
     Serial.begin(115200);
 }
 
-//! @brief loop function
+//! @grief loop function
 void loop() {
     clock2BPM();
 }

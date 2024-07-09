@@ -9,28 +9,14 @@
  * @n           I use Arduino ProMicro and have verified it with AbletonLive 12 and StudioOne 6.
  */
 
-
-
-
-
 #include <Control_Surface.h>
 USBMIDI_Interface midi_usb;
 
-// #define LEDpin X
-/*
-    ↑If necessary, use with "digitalWrite(LEDpin, LOW);"
-    and "digitalWrite(LEDpin, HIGH);" described below.
-    X may be 13 if you use UNO R3.
-*/
+
 
 uint16_t  BPM       = 0;  //!< global BPM
 uint8_t   ppqn      = 0;  //!< 24 Pulses Per Quarter Note
 uint32_t  startTime = 0;  //!< for Timer
-
-
-
-
-
 /**
  * @brief         I don't know the details, but it is an alternative to "setHandleClock". 
  * @n             Closing the serial monitor may also stop the program.
@@ -44,9 +30,7 @@ bool realTimeMessageCallback(RealTimeMessage rt) {
 
     if (ppqn == 0) {                    // the first Clock
         startTime = micros();           // start Timer
-        // digitalWrite(LEDpin, LOW);   // Sync LED: OFF
     }
-
     ppqn++;                             // count up Clock
 
     if (ppqn > 24) {                    // 24 Clocks = 1 bar
@@ -55,14 +39,11 @@ bool realTimeMessageCallback(RealTimeMessage rt) {
             BPM = round(preBPM);
         }
         Serial.println(BPM);            // or just "Serial.println(preBPM)"
-        // digitalWrite(LEDpin, HIGH);  // Sync LED: ON
         ppqn = 0;                       // reset Clock
     }
 
     return true;
 }
-
-
 
 
 
