@@ -6,6 +6,8 @@
  * @date        2024-05-31
  * @copyright   GPL-3.0
  * @details     This sketch can get BPM from Clock sent by DAW, with Library "MIDIUSB.h".
+ * @n           I use Arduino ProMicro and have verified it with AbletonLive 12 and StudioOne 6.
+ * @n           More Info: https://qiita.com/aSumo-1xts/items/3cc1104928fd9da8a85c
  */
 
 #include <MIDIUSB.h>
