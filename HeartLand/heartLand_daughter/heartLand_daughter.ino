@@ -26,16 +26,12 @@ uint8_t util02 = 3;     //!< 余りその2
 
 
 
-
-
 CCAbsoluteEncoder enc[] = {
     {{26, 28}, {MIDI_CC::Sound_Controller_1, Channel::createChannel(ch[0])}, BPM_multi, }, // enc01
     {{29, 31}, {MIDI_CC::Sound_Controller_2, Channel::createChannel(ch[0])}, enc_multi, }, // enc02
     {{32, 34}, {MIDI_CC::Sound_Controller_3, Channel::createChannel(ch[0])}, enc_multi, }, // enc03
     {{35, 37}, {MIDI_CC::Sound_Controller_4, Channel::createChannel(ch[0])}, enc_multi, }, // enc04
 };
-
-
 
 
 
@@ -62,8 +58,6 @@ CCButton sw[] = {
 
 
 
-
-
 CCPotentiometer pot[] = {
     {A0,  {MIDI_CC::Sound_Controller_3,  Channel::createChannel(ch[1])}, }, // pot01_01
     {A1,  {MIDI_CC::Sound_Controller_4,  Channel::createChannel(ch[1])}, }, // pot01_02
@@ -83,8 +77,6 @@ CCPotentiometer pot[] = {
     {A14, {MIDI_CC::Sound_Controller_9,  Channel::createChannel(ch[2])}, }, // pot04_03
     {A15, {MIDI_CC::Sound_Controller_10, Channel::createChannel(ch[2])}, }, // pot04_04
 };
-
-
 
 
 

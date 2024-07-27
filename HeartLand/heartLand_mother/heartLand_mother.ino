@@ -26,16 +26,12 @@ uint8_t LEDpin[2] = {3, 5};     //!< indicator
 
 
 
-
-
 CCButton sw[] = {
     {10,  {MIDI_CC::Sound_Controller_1, Channel::createChannel(ch[1])}, }, // Solo01
     {14,  {MIDI_CC::Sound_Controller_2, Channel::createChannel(ch[1])}, }, // Solo02
     {15,  {MIDI_CC::Sound_Controller_1, Channel::createChannel(ch[2])}, }, // Solo03
     {16,  {MIDI_CC::Sound_Controller_2, Channel::createChannel(ch[2])}, }, // Solo04
 };
-
-
 
 
 
@@ -48,8 +44,6 @@ CCPotentiometer pot[] = {
     {A8, {MIDI_CC::Balance,         Channel::createChannel(ch[0])}, }, // A x B
     {A9, {MIDI_CC::Channel_Volume,  Channel::createChannel(ch[0])}, }, // Master
 };
-
-
 
 
 
@@ -67,8 +61,6 @@ void setup() {
 void loop() {
     Control_Surface.loop();
 }
-
-
 
 
 
