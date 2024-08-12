@@ -7,7 +7,7 @@
  * @copyright   GPL-3.0
  * @details     This sketch can get BPM from Clock sent by DAW, with Library "Control_Surface.h".
  * @n           I use Arduino ProMicro and have verified it with AbletonLive 12 and StudioOne 6.
- * @n           More Info: https://qiita.com/aSumo-1xts/items/3cc1104928fd9da8a85c
+ * @n           More Info: https://zenn.dev/asumo_1xts/articles/612f2ece9f22c9
  */
 
 #include <Control_Surface.h>
