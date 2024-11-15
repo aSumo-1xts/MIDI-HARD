@@ -1,10 +1,11 @@
 @startuml HeartLand
 title "HeartLand" System Overview
 
-skinparam defaultFontname   Arial
+!theme vibrant
+skinparam backgroundColor   white
+skinparam shadowing         false
+skinparam defaultFontname   Helvetica
 skinparam actorStyle        awesome
-
-' left to right direction
 
 package "Arduino" {
     actor "Mega2560 ProMini \n(daughter)" as daughter
